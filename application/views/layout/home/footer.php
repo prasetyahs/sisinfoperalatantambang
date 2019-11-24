@@ -1,0 +1,112 @@
+<footer class="ftco-footer ftco-section" style="background:#f8a978">
+    <div class="container">
+        <div class="row">
+            <div class="mouse">
+                <a href="#" class="mouse-icon">
+                    <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="" style="color:#fff " target="_blank">PT NESITOR INDONESIA</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal Login-->
+<div id="PrimaryModalhdbgcl" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header header-color-modal bg-color-1" style="background-color:#f8a978;">
+                <h4 id="header" class="modal-title" style="color:#fff;font-size:18px">Form Login</h4>
+                <div class="modal-close-area modal-close-df">
+                    <a class="close" data-dismiss="modal" href="#" style="background-color:#f8a978;"><i class="fa fa-close" style="position:relative;right:7px;bottom:13px;">X</i></a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url(); ?>home/login/" method="post">
+                    <div class="form-group-inner">
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <label class="login2 pull-right pull-right-pro">Email </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                <input id="id" type="text" name="email" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-inner">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <label class="login2 pull-right pull-right-pro">Password</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                <input type="password" id="nama" name="password" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <a href="<?= base_url(); ?>register">
+                        <p style="margin-top:10px;text-align:right;">tidak punya akun?</p>
+                    </a>
+
+            </div>
+            <div class="modal-footer">
+                <a data-dismiss="modal" href="#" style="color:gray; background-color:#fff;">Batal</a>
+                <button class="btn btn-primary" style="background:#f8a978;width:90px;height=50px" id="btnSubmit" name="submit" type="submit" href="#">Proses</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg>
+</div>
+
+<script src="<?=base_url(); ?>assets/home/js/jquery.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/popper.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/bootstrap.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery.easing.1.3.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery.waypoints.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery.stellar.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/owl.carousel.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery.magnific-popup.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/aos.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/jquery.animateNumber.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/bootstrap-datepicker.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/scrollax.min.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/main.js"></script>
+<script src="<?=base_url(); ?>assets/home/js/modal.js"></script>
+<script src="<?= base_url(); ?>assets/swal.js"></script>
+<script>
+    var alert = document.getElementById("alert");
+    if (alert != null) {
+        var message = document.getElementById("message").innerHTML;
+        var icon = document.getElementById("icon").innerHTML;
+        var title = document.getElementById("title").innerHTML;
+        swal({
+            title: title,
+            text: message,
+            icon: icon,
+        });
+    }
+</script>
+
+</body>
+
+</html>
