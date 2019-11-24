@@ -72,7 +72,7 @@
                     <div class="w-100"></div>
                     <div class="col-md-12">
                         <h5>Berat</h5>
-                        <p style="color: #000;">600 kg available</p>
+                        <p style="color: #000;"><?= $row['berat'];?> kg</p>
                     </div>
                 </div>
                 <?php if($this->session->userdata('customer') != null){ ?>

@@ -18,7 +18,7 @@ class Register extends CI_Controller
         $idUsers = "USR-".$generateID;
 
     if(isset($_POST['register'])){
-       
+        $username = $_POST['username'];
         $lName = $_POST['lname'];
         $fname = $_POST['fname'];
         $email = $_POST['email'];
@@ -27,7 +27,7 @@ class Register extends CI_Controller
         $c_password = md5($_POST['confirm_password']);
         $type = 0;
         $cekUsers = $this->db->get_where('tb_users',array('email' =>$email))->num_rows();
-
+        
         if(empty($fname)){
             $this->session->set_flashdata('icon','warning');
             $this->session->set_flashdata('title','Warning !');
@@ -79,12 +79,13 @@ class Register extends CI_Controller
             "nama_belakang"=>$fname,
             "email"=>$email,
             "nomor_telp"=>$phone,
-            "password"=>$password
+            "password"=>$password,
+            "username"=>$username
         );
         $insertProcress = $this->UsersModel->insertUsers($data);
         if($insertProcress){
-            $this->session->set_flashdata('icon','warning');
-            $this->session->set_flashdata('title','Warning !');
+            $this->session->set_flashdata('icon','success');
+            $this->session->set_flashdata('title','Success !');
             $this->session->set_flashdata('message','Pendaftaran Berhasil,Silahkan Log in !');
             redirect(base_url().'register/');
         }else{

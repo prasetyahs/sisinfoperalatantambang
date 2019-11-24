@@ -88,7 +88,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="emailaddress">Alamat Email</label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" value=<?= $this->session->userdata('email'); ?> class="form-control" placeholder="">
                             </div>
                         </div>
                         <div class="w-100"></div>

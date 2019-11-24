@@ -34,7 +34,7 @@
 					</li>
 					<li class="nav-item active"><a href="<?=base_url()?>pages/about" class="nav-link">Tentang</a></li>
 					<li class="nav-item active"><a href="<?=base_url()?>pages/contact" class="nav-link">Kontak</a></li>
-					<li class="nav-item active"><a href="<?=base_url()?>pages/contact" class="nav-link">Transaksi</a></li>
+					<li class="nav-item active"><a href="<?=base_url()?>pages/list_transaction" class="nav-link">Transaksi</a></li>
 					<?php if($this->session->userdata('admin')){ ?>
 						<li class="nav-item active"><a href="<?=base_url()?>pages/contact" class="nav-link">Dashboard</a></li>
 					<?php } ?>

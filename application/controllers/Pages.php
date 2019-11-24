@@ -71,6 +71,13 @@ class Pages extends CI_Controller{
         $this->session->sess_destroy();
         redirect(base_url());
     }
+
+    public function list_transaction(){
+        $this->load->view("layout/home/header");
+        $this->load->view("layout/home/navbar");
+        $this->load->view("v_transaction");
+        $this->load->view("layout/home/footer");
+    }
 }
 
 

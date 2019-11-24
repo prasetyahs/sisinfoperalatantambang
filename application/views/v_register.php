@@ -22,6 +22,10 @@
 				</div>
 				<form action="<?= base_url();?>register/prosesregister" method="POST">
 					<h3>Form Pendaftaran</h3>
+					<div class="form-wrapper">
+						<input name="username"  type="text" placeholder="Username" class="form-control" style="border-bottom:1px solid #f8a978;">
+						<i class="zmdi zmdi-username"></i>
+					</div>
 					<div class="form-group">
 						<input name="lname" type="text" placeholder="Nama Depan" class="form-control" style="border-bottom:1px solid #f8a978;">
 						<input name="fname"  type="text" placeholder="Nama Belakang" class="form-control" style="border-bottom:1px solid #f8a978;">

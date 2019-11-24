@@ -20,53 +20,73 @@
     <p style="display:none;" id="title"><?= $this->session->flashdata('title');  ?></p>
     <p style="display:none;" id="message"><?= $this->session->flashdata('message');  ?></p>
 <?php } ?>
-<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
-    <div class="row">
-        <div class="col ftco-animate">
-            <img src="https://dev.nabors.com/sites/default/files/rigs-offshore-platform-bigfoot_0.jpg">
-        </div>
-        <div class="col heading-section text-center ftco-animate">
-            <div class="container">
+<div class="container-fluid bg-light">
+    <div class="row">   
+    <img src="https://dev.nabors.com/sites/default/files/rigs-offshore-platform-bigfoot_0.jpg" alt="">
+            <div class="col py-5">
+            <div class="container ftco-animate">
                 <div class="row justify-content-center mb-3 pb-3">
-                    <br>
                     <div class="col-md-12 heading-section text-center ftco-animate">
-                        <h2 class="mb-4"></h2>
-                        <p>Cari rekomendasi produk</p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <form action="<?= base_url(); ?>home/rekomendasi" method="post">
-                <div class="form-group-inner">
-                    <div class="row" style="margin-bottom:10px;">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="login2 pull-right pull-right-pro">Tujuan</label>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input id="id" type="text" name="email" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group-inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                            <label class="login2 pull-right pull-right-pro">Password</label>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="password" id="nama" name="password" class="form-control" />
-                        </div>
+                        <h3 class="mb-4">Cari Rekomendasi Produk</h3>
                     </div>
                 </div>
 
-        </div>
-        <div class="modal-footer">
-
-        </div>
-        </form>
+				<form action="<?= base_url();?>rekomendasi" method="POST">
+                    <label for="">Kualitas</label>
+                	<div class="form-wrapper">
+                        <div class="select-wrap">    
+                             <select name="kualitas" id="" class="form-control">
+                                <option value="">--Pilih Kualitas--</option>
+                                <?php foreach($data_kualitas as $kualitas){?>
+                                    <option value="<?= $kualitas['nilai'] ?>"><?= $kualitas['nama_kualitas'];?></option>
+                                <?php  }?>
+                            </select>
+                        </div>
+					</div>
+                    <label for="">Merk</label>
+                    
+                	<div class="form-wrapper">
+                        <div class="select-wrap">    
+                             <select name="merk" id="" class="form-control">
+                                <option value="">--Pilih Merk--</option>
+                                <?php foreach($data_merk as $merk){?>
+                                    <option value="<?= $merk['nilai'] ?>"><?= $merk['nama_merk'];?></option>
+                                <?php  }?>
+                            </select>
+                        </div>
+					</div>
+                    <label for="">Tujuan</label>
+                	<div class="form-wrapper">
+                        <div class="select-wrap">    
+                             <select name="tujuan" id="" class="form-control">
+                                <option value="">--Pilih Tujuan--</option>
+                                <?php foreach($data_tujuan as $tujuan){?>
+                                    <option value="<?= $tujuan['nilai'] ?>"><?= $tujuan['nama_tujuan'];?></option>
+                                <?php  }?>
+                            </select>
+                        </div>
+					</div>
+                    <label for="">Category</label>
+                	<div class="form-wrapper">
+                        <div class="select-wrap">    
+                             <select name="category" id="" class="form-control">
+                                <option value="">--Pilih Category--</option>
+                                <?php foreach($data_category as $category){?>
+                                    <option value="<?= $category['nilai'] ?>"><?= $category['nama_category'];?></option>
+                                <?php  }?>
+                            </select>
+                        </div>
+					</div>
+                    <label for="">Kedalaman(KM)</label>
+                	<div class="form-wrapper">
+                        <input type="number" class="form-control"  placeholder="category : mesin bor">
+					</div>
+					<button type="submit" style="background:#f8a978;" name="register">Cari Rekomendasi</button>
+				</form>
     </div>
     </div>
     </div>
-</section>
+</div>	
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -81,19 +101,18 @@
             <?php foreach($product as $row){ ?>
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img style="height:166px;" class="img-fluid" src="<?= base_url() ?>/assets/home/images/product/<?= $row['foto'] ?>" alt="Colorlib Template">
+                    <a href="#" class="img-prod"><img  class="img-fluid" src="<?= base_url() ?>/assets/home/images/product/<?= $row['foto'] ?>" alt="Colorlib Template">
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center ">
                         <h3><a href="#"><?= $row['nama_product']; ?></a></h3>
-                        
                         <div class="d-flex">
                             <div class="pricing">
-                            <p style="color:#fff;">asd</p>
+                            <p >Rp.<?= number_format($row['harga']); ?></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex  style="margin-bottom:100px;">
+                            <div class="m-auto d-flex" style="margin-bottom:100px;">
                                 <a href="<?= base_url();?>pages/singleproduct/<?= $row['id_product'] ?>/" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                     <span><i class="ion-ios-menu"></i></span>
                                 </a>

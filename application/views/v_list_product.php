@@ -9,7 +9,6 @@
         </div>
       </div>
     </div>
-
     <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center">
@@ -25,7 +24,7 @@
 				<?php foreach($product as $row){ ?>
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="product">
-							<a href="#" class="img-prod"><img style="height:166px;" class="img-fluid" src="<?= base_url() ?>/assets/home/images/product/<?= $row['foto'] ?>" alt="Colorlib Template">
+							<a href="#" class="img-prod"><img class="img-fluid" src="<?= base_url() ?>/assets/home/images/product/<?= $row['foto'] ?>" alt="Colorlib Template">
 								<div class="overlay"></div>
 							</a>
 							<div class="text py-3 pb-4 px-3 text-center ">
@@ -33,11 +32,11 @@
 								
 								<div class="d-flex">
 									<div class="pricing">
-									<p style="color:#fff;">asd</p>
+									<p >Rp.<?= number_format($row['harga']); ?></p>
 									</div>
 								</div>
 								<div class="bottom-area d-flex px-3">
-									<div class="m-auto d-flex  style="margin-bottom:100px;">
+									<div class="m-auto d-flex"  style="margin-bottom:100px;">
 										<a href="<?= base_url();?>pages/singleproduct/<?= $row['id_product'] ?>/" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 											<span><i class="ion-ios-menu"></i></span>
 										</a>

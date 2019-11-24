@@ -8,6 +8,10 @@
             $this->load->model('PaymentModel');
             $this->load->model('ProductModel');
             $this->load->model('RentalModel');
+            $checklogin = $this->session->userdata('admin');
+            if(!$checklogin){
+                redirect(base_url());
+            }
         }
 
         public function list_transaction(){

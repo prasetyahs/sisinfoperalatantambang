@@ -10,6 +10,12 @@ class Home extends CI_Controller{
 
     public function index()
     {   
+
+        $type = $this->session->userdata('fname');
+        $data['data_category'] = $this->db->get('tb_category')->result_array();
+        $data['data_kualitas'] = $this->db->get('tb_kualitas')->result_array();
+        $data['data_tujuan'] = $this->db->get('tb_tujuan')->result_array();
+        $data['data_merk'] = $this->db->get('tb_merk')->result_array();
         $data['product'] = $this->ProductModel->getDataProduct();
         $this->load->view('layout/home/header');
         $this->load->view('layout/home/navbar');
@@ -20,12 +26,12 @@ class Home extends CI_Controller{
     
 
     public function login(){
-        $email = $_POST['email'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
-        if($email == null){
+        if($username == null){
             $this->session->set_flashdata('icon','warning');
             $this->session->set_flashdata('title','Warning !');
-            $this->session->set_flashdata('message','Email tidak boleh kosong');
+            $this->session->set_flashdata('message','username tidak boleh kosong');
             redirect(base_url());
         }
 
@@ -36,14 +42,14 @@ class Home extends CI_Controller{
             redirect(base_url());
         }
 
-        $cekUsers = $this->db->get_where('tb_users',array('email' =>$email))->row_array();
+        $cekUsers = $this->db->get_where('tb_users',array('username' =>$username))->row_array();
         if($cekUsers == null){
             $this->session->set_flashdata('icon','warning');
             $this->session->set_flashdata('title','Warning !');
             $this->session->set_flashdata('message','User tidak ditemukan');
             redirect(base_url());
         }
-
+    
         if(md5($password) == $cekUsers['password'] && $cekUsers['type'] == 0){
             //session customer
             $this->session->set_userdata('users_id',$cekUsers['id_users']);
@@ -52,19 +58,18 @@ class Home extends CI_Controller{
             $this->session->set_userdata('lname',$cekUsers['nama_belakang']);
             $this->session->set_userdata('customer',true);
             redirect(base_url());
-            
         }else if(md5($password) == $cekUsers['password'] && $cekUsers['type'] == 1){
             //session admin
             $this->session->set_userdata('users_id',$cekUsers['id_users']);
             $this->session->set_userdata('email',$cekUsers['email']);
             $this->session->set_userdata('admin',true);
             redirect(base_url().'dashboard/');
-
         }else{
             $this->session->set_flashdata('icon','warning');
             $this->session->set_flashdata('title','Warning !');
             $this->session->set_flashdata('message','Email atau Password Salah !');
             redirect(base_url());
+      
         }
         
 
