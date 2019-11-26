@@ -37,10 +37,10 @@
 								</div>
 								<div class="bottom-area d-flex px-3">
 									<div class="m-auto d-flex"  style="margin-bottom:100px;">
-										<a href="<?= base_url();?>pages/singleproduct/<?= $row['id_product'] ?>/" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+										<a href="<?= base_url();?>pages/singleproduct/<?= $row['id_product']; ?>/" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 											<span><i class="ion-ios-menu"></i></span>
 										</a>
-										<a href="<?= base_url();?>pages/checkout" class="buy-now d-flex justify-content-center align-items-center mx-1">
+										<a href="<?= base_url();?>pages/checkout/<?= $row['id_product']; ?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
 											<span><i class="ion-ios-cart"></i></span>
 										</a>
 									</div>

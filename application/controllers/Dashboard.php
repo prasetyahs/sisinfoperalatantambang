@@ -1,5 +1,5 @@
 <?php 
-
+    
     class Dashboard extends CI_Controller
     {
 
@@ -418,5 +418,6 @@
             $this->session->set_flashdata('message','Merk Product berhasil dihapus !');
             redirect(base_url().'dashboard/list_merk');
         }
+
     }
     

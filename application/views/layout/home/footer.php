@@ -93,6 +93,8 @@
 <script src="<?=base_url(); ?>assets/home/js/main.js"></script>
 <script src="<?=base_url(); ?>assets/home/js/modal.js"></script>
 <script src="<?= base_url(); ?>assets/swal.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.min.js"></script>
+
 <script>
     var alert = document.getElementById("alert");
     if (alert != null) {
@@ -105,7 +107,34 @@
             icon: icon,
         });
     }
+
+    function getDayLength(){
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var price = document.getElementById("price").value;
+        var txtTotal = document.getElementById("total");
+        var txtPriceTotal = document.getElementById("price_total");
+        var getLengthDay =dateFns.eachDay(new Date(from), new Date(to));
+        var total = price * (getLengthDay['length']-1);
+        if(total<0){
+            txtTotal.textContent = "Rp. 0";
+           txtPriceTotal.value = total;
+        }else{
+        txtTotal.textContent = "Rp. "+total.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+       txtPriceTotal.value = total;
+        }
+    }
+
+    function getRangeDate(from,to){
+        var length = dateFns.eachDay(new Date(from), new Date(to));
+        document.getElementById("range").innerHTML = length-1;
+        console.log(length-1);
+    }
+
+    
+    
 </script>
+
 
 </body>
 

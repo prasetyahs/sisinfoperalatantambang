@@ -1,3 +1,11 @@
+
+<?php 
+if($this->session->flashdata('message')){?>
+    <p id="alert"></p>
+    <p style="display:none;" id="icon"><?= $this->session->flashdata('icon');  ?></p>
+    <p style="display:none;" id="title"><?= $this->session->flashdata('title');  ?></p>
+    <p style="display:none;" id="message"><?= $this->session->flashdata('message');  ?></p>
+<?php } ?>
 <div class="hero-wrap hero-bread" style="background-image: url('https://news.detik.com/x/detail/intermeso/20180419/Kisah-Pipin-Jadi-Raja-Minyak-Indonesia/images/medco-rpnyu2.png');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -28,17 +36,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach($transaction2 as $row){ ?>
                             <tr class="text-center">
-                                <td>Rig Darat</td>
-                                <td>5 Hari</td>
-                                <td>20/09/2019</td>
-                                <td>25/09/2019</td>
-                                <td>Rp 2.000.000</td>
-                                <td><img src="https://news.detik.com/x/detail/intermeso/20180419/Kisah-Pipin-Jadi-Raja-Minyak-Indonesia/images/medco-rpnyu2.png" alt="" width="60px"></td>
+                                <td><?= $row['nama_product']; ?></td>
+                                <td id="range"><?= $row['range']; ?></td>
+                                <td id="from"><?= $row['tgl_sewa']; ?></td>
+                                <td id="to"><?= $row['tgl_pengembalian']; ?></td>
+                                <td>Rp. <?= number_format($row['biaya'],2,",","."); ?></td>
+                                <td><img src="<?= base_url() ?>assets/home/images/product/<?= $row['foto']; ?>" alt="" width="60px"></td>
+                                <?php if($row['status_penyewaan'] == 1){ ?>
                                 <td><i class="icon-check"></i></td>
+                                <?php }else{ ?>
+                                    <td><i class="icon-close"></i></td>
+                                <?php }?>
+                                <?php if($row['status_penyewaan'] == 0){ ?>
                                 <td><a href="" class="btn" style="background:#f8a978;color:white">Batal</a></td>
+                                <?php }else{ ?>
+                                    <td><a href="" class="btn" style="background:#f8a978;color:white">DP</a></td>
+                                <?php } ?>
                             </tr>                            
                             <!-- END TR-->
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>

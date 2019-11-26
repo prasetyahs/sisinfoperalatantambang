@@ -1,4 +1,6 @@
 <?php
+
+
 class Home extends CI_Controller{
 
     public function __construct(){
@@ -56,6 +58,7 @@ class Home extends CI_Controller{
             $this->session->set_userdata('email',$cekUsers['email']);
             $this->session->set_userdata('fname',$cekUsers['nama_depan']);
             $this->session->set_userdata('lname',$cekUsers['nama_belakang']);
+            $this->session->set_userdata('phone',$cekUsers['nomor_telp']);
             $this->session->set_userdata('customer',true);
             redirect(base_url());
         }else if(md5($password) == $cekUsers['password'] && $cekUsers['type'] == 1){

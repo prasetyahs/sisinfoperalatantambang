@@ -31,14 +31,6 @@
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a class="" title="Dashboard v.1" href="<?= base_url(); ?>dashboard/list_transaction"><span class="mini-sub-pro">Data Transaksi</span></a></li>
                             </ul>
-                            
-                           
-                        </li>
-                        <li class="removable">
-                            <a class="has-arrow <?php if(!empty($active_kualitas) || !empty($active_merk) || !empty($active_tujuan) || !empty($active_kategori)){echo "active";} ?>" href="index.html">
-								   <span class="fa fa-database icon-wrap"></span>
-								   <span class="mini-click-non">Pengaturan</span>
-								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a class="<?php if(!empty($active_merk)){echo "active";} ?>" title="Dashboard v.1" href="<?= base_url(); ?>dashboard/list_merk"><span class="mini-sub-pro">Data Merk</span></a></li>
                             </ul>
@@ -50,8 +42,10 @@
                             </ul>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a class="<?php if(!empty($active_kualitas)){echo "active";} ?>" title="Dashboard v.1" href="<?= base_url(); ?>dashboard/list_kualitas"><span class="mini-sub-pro">Data Kualitas</span></a></li>
-                            </ul>
+                            </ul>        
+                           
                         </li>
+                    
                         <li>
                             <a class="has-arrow" href="mailbox.html" aria-expanded="false"><span class="fa fa-shopping-bag icon-wrap" style="color:grey;" ></span> <span class="mini-click-non">Laporan</span></a>
                             

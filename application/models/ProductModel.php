@@ -14,6 +14,19 @@
                             ";
             return $this->db->query($sql)->result_array();
         }
+        public function getDataProductTrain(){
+            $sql = "SELECT id_product,nama_product,foto,harga,tb_kualitas.nilai as n_k,
+            tb_tujuan.nilai as n_t,tb_category.nilai as n_c,tb_merk.nilai as n_m,berat,kedalaman
+                        FROM tb_product,tb_kualitas,tb_tujuan,tb_merk,tb_category
+                        WHERE 
+                            tb_kualitas.id_kualitas = tb_product.id_kualitas AND
+                            tb_tujuan.id_tujuan = tb_product.id_tujuan AND
+                            tb_category.id_category = tb_product.id_category AND
+                            tb_merk.id_merk = tb_product.id_merk
+                            ";
+            return $this->db->query($sql)->result_array();
+        }
+      
         public function getListDataProduct($number,$offset){
             $sql = "SELECT id_product,nama_product,harga,nama_kualitas,nama_tujuan,tb_kualitas.nilai,                                               tb_tujuan.nilai,berat,kedalaman,nama_merk,tb_merk.id_merk,nama_category,                                                tb_category.id_category,foto
                         FROM tb_product,tb_kualitas,tb_tujuan,tb_merk,tb_category
