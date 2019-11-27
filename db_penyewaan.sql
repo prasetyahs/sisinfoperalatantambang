@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Nov 2019 pada 18.35
--- Versi server: 10.1.40-MariaDB
--- Versi PHP: 7.3.5
+-- Waktu pembuatan: 27 Nov 2019 pada 01.49
+-- Versi server: 10.3.15-MariaDB
+-- Versi PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,7 +39,10 @@ CREATE TABLE `tb_category` (
 --
 
 INSERT INTO `tb_category` (`id_category`, `nama_category`, `nilai`) VALUES
-('KTG-45312', 'Camera', 20);
+('KTG-34331', 'Alat Tambang minyak ', 22),
+('KTG-37833', 'Alat uji minyak bumi', 11),
+('KTG-40279', 'Mesin Bor', 23),
+('KTG-42021', 'Alat Survey', 10);
 
 -- --------------------------------------------------------
 
@@ -58,7 +61,8 @@ CREATE TABLE `tb_kualitas` (
 --
 
 INSERT INTO `tb_kualitas` (`id_kualitas`, `nama_kualitas`, `nilai`) VALUES
-('KLL-44588', 'Bagus', 20);
+('KLL-28041', 'bersertifikat/bagus', 14),
+('KLL-98131', 'tidak bersertifikat/standart', 15);
 
 -- --------------------------------------------------------
 
@@ -77,7 +81,21 @@ CREATE TABLE `tb_merk` (
 --
 
 INSERT INTO `tb_merk` (`id_merk`, `nama_merk`, `nilai`) VALUES
-('KTG-49939', 'Guangdoang', 10);
+('KTG-11788', 'Keniko', 8),
+('KTG-30283', 'South', 9),
+('KTG-31478', 'NDJ-55', 10),
+('KTG-34525', 'BESTWILL', 3),
+('KTG-44604', 'Garmin', 8),
+('KTG-47984', 'Henan', 2),
+('KTG-49145', 'Topcon DT 209', 11),
+('KTG-55287', 'Guangdong', 4),
+('KTG-57588', 'Vicam Mechatronics', 5),
+('KTG-80402', 'Hanfa', 6),
+('KTG-82405', 'Naniura', 7),
+('KTG-89121', 'YJS-150', 14),
+('KTG-93477', 'VA8040', 16),
+('KTG-95232', 'ASTM (E100) ', 12),
+('KTG-98910', 'Ohaus-PX22', 15);
 
 -- --------------------------------------------------------
 
@@ -110,8 +128,16 @@ CREATE TABLE `tb_penyewaaan` (
   `kota` varchar(30) NOT NULL,
   `kode_pos` int(11) NOT NULL,
   `biaya` int(11) NOT NULL,
-  `status_penyewaan` varchar(50) NOT NULL
+  `status_penyewaan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_penyewaaan`
+--
+
+INSERT INTO `tb_penyewaaan` (`id_sewa`, `id_users`, `id_product`, `tgl_sewa`, `tgl_pengembalian`, `alamat`, `alamat_pt`, `kota`, `kode_pos`, `biaya`, `status_penyewaan`) VALUES
+('13', 'USR-104', 'PRO-49152', '2019-11-26', '2019-11-28', 'jalan kesadaran RT 04 RW 02 ', 'Jalan kesadaran', 'DKI JAKARTA', 13420, 24000000, 0),
+('138', 'USR-87', 'PRO-49152', '2019-11-26', '2019-11-27', 'jalan kokoakos', 'skaosakoksaosa', 'DKI JAKARTA', 13420, 12000000, 0);
 
 -- --------------------------------------------------------
 
@@ -137,11 +163,7 @@ CREATE TABLE `tb_product` (
 --
 
 INSERT INTO `tb_product` (`id_product`, `nama_product`, `harga`, `id_kualitas`, `id_merk`, `id_tujuan`, `id_category`, `berat`, `kedalaman`, `foto`) VALUES
-('PRO-27236', 'Mesin Bor Listrik', 2500000, 'KLL-44588', 'KTG-49939', 'TJ-64930', 'KTG-45312', 2, 0, '06d7c7ec784d300f9a3174f0b3123804.jpg'),
-('PRO-31127', 'Mesin Bor', 1000000, 'KLL-44588', 'KTG-49939', 'TJ-64930', 'KTG-45312', 2, 100, '3aaf24f8d182cef27f3ee7e7a679a309.jpg'),
-('PRO-49108', 'Dazzer', 1000000, 'KLL-44588', 'KTG-49939', 'TJ-64930', 'KTG-45312', 100, 100, 'a43301568043e1ec870fc95a827d5c9c.jpg'),
-('PRO-59130', 'Mobil Semen', 1000000, 'KLL-44588', 'KTG-49939', 'TJ-64930', 'KTG-45312', 2, 100, '5beed6322133a6d0db8ed8860a867279.jpg'),
-('PRO-80812', 'borehole camera', 2000000, 'KLL-44588', 'KTG-49939', 'TJ-64930', 'KTG-45312', 50, 0, 'cb37703c04d9861d431159f3ad5b53e5.jpg');
+('PRO-49152', 'Bore Hole camera', 12000000, 'KLL-28041', 'KTG-47984', 'TJ-21868', 'KTG-42021', 30, 0, 'a42d7ab6fba35bc6d1470d650de44e6c.jpg');
 
 -- --------------------------------------------------------
 
@@ -160,7 +182,14 @@ CREATE TABLE `tb_tujuan` (
 --
 
 INSERT INTO `tb_tujuan` (`id_tujuan`, `nama_tujuan`, `nilai`) VALUES
-('TJ-64930', 'Menyediakan jasa borehole camera untuk sumur bor (deep well), menggunakan alat borehole camera dengan dual kamera (bawah dan samping) untuk menangkap gambar secara maksimal. Dapat digunakan untuk perekaman konstruksi sumur antara lain mengetahui kedalaman sumur, mengetahui jumlah saringan (screen), mengetahui posisi kerusakan pada dinding sumur.', 11);
+('TJ-11269', 'untuk memberikan gambaran lubang bawah tanah hingga 200m', 200),
+('TJ-21868', 'untuk pengeboran dengan kedalaman 100m', 110),
+('TJ-21906', 'untuk mengukur kekerasan batu', 13),
+('TJ-59783', 'untuk memberikan gambaran lubang bawah tanah hingga 100m', 100),
+('TJ-61619', 'untuk mengetahui persebaran mineral di dalam lapisan tanah', 12),
+('TJ-74863', 'untuk pemetaan suatu daerah pertambangan', 15),
+('TJ-76290', 'untuk memberikan gambaran lubang bawah tanah hingga 120m', 120),
+('TJ-76820', 'memberikan gambaran lubang bawah tanah hingga 150m', 150);
 
 -- --------------------------------------------------------
 
@@ -170,6 +199,7 @@ INSERT INTO `tb_tujuan` (`id_tujuan`, `nama_tujuan`, `nilai`) VALUES
 
 CREATE TABLE `tb_users` (
   `id_users` varchar(30) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `nama_depan` varchar(15) NOT NULL,
   `nama_belakang` varchar(15) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -182,9 +212,10 @@ CREATE TABLE `tb_users` (
 -- Dumping data untuk tabel `tb_users`
 --
 
-INSERT INTO `tb_users` (`id_users`, `nama_depan`, `nama_belakang`, `email`, `nomor_telp`, `password`, `type`) VALUES
-('USR-52', 'prima', 'genta', 'gentaprima600@gmail.com', '088998886169', '41ad1bd82a8744f040c267fdcafa54e8', 0),
-('USR-58', 'prasetya', 'google', 'prasetya2421@gmail.com', '089746736284\'', 'b8f8312b939f00abb38eeafd4fd107', 0);
+INSERT INTO `tb_users` (`id_users`, `username`, `nama_depan`, `nama_belakang`, `email`, `nomor_telp`, `password`, `type`) VALUES
+('USR-104', 'kocak', 'prasetya', 'google', 'prasetya2423@gmail.com', '089746736284', 'c6c30eed246c03ebb9eef7b46a5f006b', 0),
+('USR-55', 'admin', 'adm', 'adm', 'admin@gmail.com', '089746736284', 'b8f8312b939f00abb38eeafd4fd107f3', 1),
+('USR-87', 'lucu', 'kocak', 'kocak', 'prasetya2421@gmail.com', '089746736284', 'b8f8312b939f00abb38eeafd4fd107f3', 0);
 
 --
 -- Indexes for dumped tables
